@@ -23,7 +23,7 @@ router.param("productId", async (req, res, next, productId) => {
   }
 });
 
-router.post("/", productCreate);
+// router.post("/", productCreate);
 
 router.get("/", productListFetch);
 

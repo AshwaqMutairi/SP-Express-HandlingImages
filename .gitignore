@@ -1,5 +1,7 @@
 db/database.js
 
+media 
+
 # Logs
 logs
 *.log
