@@ -32,18 +32,18 @@ exports.productCreate = async (req, res, next) => {
   }
 };
 
-exports.productUpdate = async (req, res, next) => {
-  try {
-    const product = await Product.findByIdAndUpdate(
-      req.product,
-      req.body,
-      { new: true, runValidators: true } // returns the updated product
-    );
-    return res.status(200).json(product);
-  } catch (error) {
-    next(error);
-  }
-};
+// exports.productUpdate = async (req, res, next) => {
+//   try {
+//     const product = await Product.findByIdAndUpdate(
+//       req.product,
+//       req.body,
+//       { new: true, runValidators: true } // returns the updated product
+//     );
+//     return res.status(200).json(product);
+//   } catch (error) {
+//     next(error);
+//   }
+// };
 
 exports.productDelete = async (req, res, next) => {
   try {

@@ -2,9 +2,9 @@ const express = require("express");
 const Product = require("../../db/models/Product");
 const {
   productListFetch,
-  productCreate,
+  // productCreate,
   productDelete,
-  productUpdate,
+  // productUpdate,
   productDetailFetch,
   fetchProduct,
 } = require("./controllers");
@@ -23,13 +23,13 @@ router.param("productId", async (req, res, next, productId) => {
   }
 });
 
+// router.put("/:productId", productUpdate);
+
 // router.post("/", productCreate);
 
 router.get("/", productListFetch);
 
 router.get("/:productId", productDetailFetch);
-
-router.put("/:productId", productUpdate);
 
 router.delete("/:productId", productDelete);
 
