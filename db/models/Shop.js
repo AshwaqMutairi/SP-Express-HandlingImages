@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const mongooseSlugPlugin = require("mongoose-slug-plugin");
 
-const CategorySchema = mongoose.Schema(
+const ShopSchema = mongoose.Schema(
   {
     name: String,
     image: String,
@@ -12,6 +12,6 @@ const CategorySchema = mongoose.Schema(
   }
 );
 
-CategorySchema.plugin(mongooseSlugPlugin, { tmpl: "<%=name%>" });
+ShopSchema.plugin(mongooseSlugPlugin, { tmpl: "<%=name%>" });
 
-module.exports = mongoose.model("Category", CategorySchema);
+module.exports = mongoose.model("Shop", ShopSchema);

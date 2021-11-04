@@ -2,20 +2,20 @@ const express = require("express");
 const router = express.Router();
 
 const {
-  categoryCreate,
-  getCategories,
+  shopCreate,
+  getShops,
   productUpdate,
   productCreate,
 } = require("./controllers");
 const upload = require("../../middleware/multer");
 
-router.get("/", getCategories);
-router.post("/", categoryCreate);
+router.get("/", getShops);
+router.post("/", shopCreate);
 router.put(
-  "/:categoryId/products/productId",
+  "/:shopId/products/productId",
   upload.single("image"),
   productUpdate
 );
-router.post("/:categoryId/products", upload.single("image"), productCreate);
+router.post("/:shopId/products", upload.single("image"), productCreate);
 
 module.exports = router;

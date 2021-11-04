@@ -1,21 +1,21 @@
-const Category = require("../../db/models/Category");
+const Shop = require("../../db/models/Shop");
 const Product = require("../../db/models/Product");
 
 //get catrgory list
-exports.getCategories = async (req, res) => {
+exports.getShops = async (req, res) => {
   try {
-    const categories = await Category.find().populate("products");
-    return res.json(categories);
+    const shops = await Shop.find().populate("products");
+    return res.json(shops);
   } catch (error) {
     return res.status(500).json({ message: error.message });
   }
 };
 
 //creat
-exports.categoryCreate = async (req, res) => {
+exports.shopCreate = async (req, res) => {
   try {
-    const newCategory = await Category.create(req.body);
-    return res.status(201).json(newCategory);
+    const newShop = await Shop.create(req.body);
+    return res.status(201).json(newShop);
   } catch (error) {
     return res.status(500).json({ message: error.message });
   }
@@ -51,12 +51,12 @@ exports.productCreate = async (req, res) => {
       req.body.image = `http://${req.get("host")}/media/${req.file.filename}`;
     }
 
-    const categoryId = req.params.categoryId;
-    req.body = { ...req.body, category: categoryId };
+    const shopId = req.params.shopId;
+    req.body = { ...req.body, shop: shopId };
     const newProduct = await Product.create(req.body);
 
-    await Category.findOneAndUpdate(
-      { _id: req.params.categoryId },
+    await Shop.findOneAndUpdate(
+      { _id: req.params.shopId },
       { $push: { products: newProduct._id } }
     );
 
