@@ -36,3 +36,7 @@ exports.signin = async (req, res, next) => {
     username: user.username,
   };
 };
+
+exports.signin = (req, res) => {
+  console.log("exports.signin -> req", req.user);
+};

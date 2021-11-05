@@ -8,9 +8,15 @@ const {
   productCreate,
 } = require("./controllers");
 const upload = require("../../middleware/multer");
+const passport = require("passport");
 
 router.get("/", getShops);
-router.post("/", shopCreate);
+router.post(
+  "/",
+  passport.authenticate("jwt", { session: false }),
+  upload.single("image"),
+  shopCreate
+);
 router.put(
   "/:shopId/products/productId",
   upload.single("image"),

@@ -7,10 +7,13 @@ const errorHandler = require("./middleware/errorHandler");
 const shopsRoutes = require("./apis/shops/routes");
 //new
 const usersRoutes = require("./apis/users/routes");
+// Passport Strategies
+const { localStrategy, jwtStrategy } = require("./middleware/passport");
 
 const cors = require("cors");
 const path = require("path");
 const app = express();
+const passport = require("passport");
 
 connectDB();
 
@@ -24,6 +27,11 @@ app.use((req, res, next) => {
   else next();
 });
 app.use(cors());
+
+// Passport Setup
+app.use(passport.initialize());
+passport.use(localStrategy);
+passport.use(jwtStrategy);
 
 // Routes
 app.use("/api/products", productRoutes);
